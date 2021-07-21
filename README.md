@@ -3,10 +3,10 @@
 // IERC20.sol
 pragma solidity ^0.6.2;
 
-// ELONS BITCH GETS CAKE
-// Hold and get rewarded in CAKE!
+// ELONSBITCHGOTCAKE
+// Hold and get rewarded in ELONSBITCHGOTCAKE $EBGC!
 // 3% LP, 7% BMON REWARDS, 5% MARKETING | 15% TAX
-// Telegram : https://t.me/Elonsbitch
+// Telegram : https://t.me/ELONSBITCH
 
 pragma solidity ^0.6.2;
 
@@ -1093,7 +1093,7 @@ contract DividendPayingToken is ERC20, Ownable, DividendPayingTokenInterface, Di
   using SafeMathUint for uint256;
   using SafeMathInt for int256;
 
-  address public immutable CAKE = address(0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82); //CAKE
+  address public immutable CAKE = address(0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82); //CAKE
 
 
   // With `magnitude`, we can properly distribute dividends even if the amount of received ether is small.
@@ -1247,7 +1247,7 @@ contract DividendPayingToken is ERC20, Ownable, DividendPayingTokenInterface, Di
 
 
 
-contract ELONSBITCHGETSCAKE is ERC20, Ownable {
+contract ELONSBITCHGOTCAKE is ERC20, Ownable {
     using SafeMath for uint256;
 
     IUniswapV2Router02 public uniswapV2Router;
@@ -1255,11 +1255,11 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
 
     bool private swapping;
 
-    EBGCDividendTracker public dividendTracker;
+   ELONSBITCHGOTCAKEDividendTracker public dividendTracker;
 
     address public deadWallet = 0x000000000000000000000000000000000000dEaD;
 
-    address public immutable CAKE = address(0x08ba0619b1e7A582E0BCe5BBE9843322C954C340); //CAKE
+    address public immutable CAKE = address(0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82); //CAKE
 
     uint256 public swapTokensAtAmount = 2000000 * (10**18);
     
@@ -1273,7 +1273,6 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
     address public _marketingWalletAddress = 0x9072E9f4e0d84072c878A10ed25F89D81c56d7C9;
 
 
-    // use by default 300,000 gas to process auto-claiming dividends
     uint256 public gasForProcessing = 300000;
 
      // exlcude from fees and max transaction amount
@@ -1317,9 +1316,9 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
     	address indexed processor
     );
 
-    constructor() public ERC20("ELONS BITCH GETS CAKE", "ELONSBITCHGETSCAKE") {
+    constructor() public ERC20("ELONS BITCH GOT CAKE", "ELONSBITCHGOTCAKE") {
 
-    	dividendTracker = new EBGCDividendTracker();
+    	dividendTracker = new ELONSBITCHGOTCAKEDividendTracker();
 
 
     	IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
@@ -1356,11 +1355,11 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
   	}
 
     function updateDividendTracker(address newAddress) public onlyOwner {
-        require(newAddress != address(dividendTracker), "EBGC: The dividend tracker already has that address");
+        require(newAddress != address(dividendTracker), "ELONSBITCHGOTCAKE: The dividend tracker already has that address");
 
-        EBGCDividendTracker newDividendTracker = EBGCDividendTracker(payable(newAddress));
+        ELONSBITCHGOTCAKEDividendTracker newDividendTracker = ELONSBITCHGOTCAKEDividendTracker(payable(newAddress));
 
-        require(newDividendTracker.owner() == address(this), "EBGC: The new dividend tracker must be owned by the ELONSBITCHGETSCAKE token contract");
+        require(newDividendTracker.owner() == address(this), "ELONSBITCHGOTCAKE: The new dividend tracker must be owned by the ELONSBITCHGOTCAKE token contract");
 
         newDividendTracker.excludeFromDividends(address(newDividendTracker));
         newDividendTracker.excludeFromDividends(address(this));
@@ -1373,7 +1372,7 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
     }
 
     function updateUniswapV2Router(address newAddress) public onlyOwner {
-        require(newAddress != address(uniswapV2Router), "EBGC: The router already has that address");
+        require(newAddress != address(uniswapV2Router), "ELONSBITCHGOTCAKE: The router already has that address");
         emit UpdateUniswapV2Router(newAddress, address(uniswapV2Router));
         uniswapV2Router = IUniswapV2Router02(newAddress);
         address _uniswapV2Pair = IUniswapV2Factory(uniswapV2Router.factory())
@@ -1382,7 +1381,7 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
     }
 
     function excludeFromFees(address account, bool excluded) public onlyOwner {
-        require(_isExcludedFromFees[account] != excluded, "EBGC: Account is already the value of 'excluded'");
+        require(_isExcludedFromFees[account] != excluded, "ELONSBITCHGOTCAKE: Account is already the value of 'excluded'");
         _isExcludedFromFees[account] = excluded;
 
         emit ExcludeFromFees(account, excluded);
@@ -1418,7 +1417,7 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
 
 
     function setAutomatedMarketMakerPair(address pair, bool value) public onlyOwner {
-        require(pair != uniswapV2Pair, "EBGC: The PancakeSwap pair cannot be removed from automatedMarketMakerPairs");
+        require(pair != uniswapV2Pair, "ELONSBITCHGOTCAKE: The PancakeSwap pair cannot be removed from automatedMarketMakerPairs");
 
         _setAutomatedMarketMakerPair(pair, value);
     }
@@ -1429,7 +1428,7 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
 
 
     function _setAutomatedMarketMakerPair(address pair, bool value) private {
-        require(automatedMarketMakerPairs[pair] != value, "EBGC: Automated market maker pair is already set to that value");
+        require(automatedMarketMakerPairs[pair] != value, "ELONSBITCHGOTCAKE: Automated market maker pair is already set to that value");
         automatedMarketMakerPairs[pair] = value;
 
         if(value) {
@@ -1441,8 +1440,8 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
 
 
     function updateGasForProcessing(uint256 newValue) public onlyOwner {
-        require(newValue >= 200000 && newValue <= 500000, "EBGC: gasForProcessing must be between 200,000 and 500,000");
-        require(newValue != gasForProcessing, "EBGC: Cannot update gasForProcessing to same value");
+        require(newValue >= 200000 && newValue <= 500000, "ELONSBITCHGOTCAKE: gasForProcessing must be between 200,000 and 500,000");
+        require(newValue != gasForProcessing, "ELONSBITCHGOTCAKE: Cannot update gasForProcessing to same value");
         emit GasForProcessingUpdated(newValue, gasForProcessing);
         gasForProcessing = newValue;
     }
@@ -1694,7 +1693,7 @@ contract ELONSBITCHGETSCAKE is ERC20, Ownable {
     }
 }
 
-contract EBGCDividendTracker is Ownable, DividendPayingToken {
+contract ELONSBITCHGOTCAKEDividendTracker is Ownable, DividendPayingToken {
     using SafeMath for uint256;
     using SafeMathInt for int256;
     using IterableMapping for IterableMapping.Map;
@@ -1714,17 +1713,17 @@ contract EBGCDividendTracker is Ownable, DividendPayingToken {
 
     event Claim(address indexed account, uint256 amount, bool indexed automatic);
 
-    constructor() public DividendPayingToken("EBGC_Dividen_Tracker", "EBGC_Dividend_Tracker") {
+    constructor() public DividendPayingToken("ELONSBITCHGOTCAKE_Dividen_Tracker", "ELONSBITCHGOTCAKE_Dividend_Tracker") {
     	claimWait = 3600;
         minimumTokenBalanceForDividends = 200000 * (10**18); //must hold 200000+ tokens
     }
 
     function _transfer(address, address, uint256) internal override {
-        require(false, "EBGC_Dividend_Tracker: No transfers allowed");
+        require(false, "ELONSBITCHGOTCAKE_Dividend_Tracker: No transfers allowed");
     }
 
     function withdrawDividend() public override {
-        require(false, "EBGC_Dividend_Tracker: withdrawDividend disabled. Use the 'claim' function on the main ELONSBITCHGETSCAKE contract.");
+        require(false, "ELONSBITCHGOTCAKE_Dividend_Tracker: withdrawDividend disabled. Use the 'claim' function on the main ELONSBITCHGOTCAKE contract.");
     }
 
     function excludeFromDividends(address account) external onlyOwner {
@@ -1738,8 +1737,8 @@ contract EBGCDividendTracker is Ownable, DividendPayingToken {
     }
 
     function updateClaimWait(uint256 newClaimWait) external onlyOwner {
-        require(newClaimWait >= 3600 && newClaimWait <= 86400, "EBGC_Dividend_Tracker: claimWait must be updated to between 1 and 24 hours");
-        require(newClaimWait != claimWait, "EBGC_Dividend_Tracker: Cannot update claimWait to same value");
+        require(newClaimWait >= 3600 && newClaimWait <= 86400, "ELONSBITCHGOTCAKE_Dividend_Tracker: claimWait must be updated to between 1 and 24 hours");
+        require(newClaimWait != claimWait, "ELONSBITCHGOTCAKE_Dividend_Tracker: Cannot update claimWait to same value");
         emit ClaimWaitUpdated(newClaimWait, claimWait);
         claimWait = newClaimWait;
     }
